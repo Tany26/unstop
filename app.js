@@ -2,10 +2,18 @@ const express = require("express");
 const connectDB = require("./DB/config/connection");
 const Seat = require("./DB/model/model");
 const app = express();
+
+const cors = require("cors");
 const PORT = process.env.PORT || 3000;
 connectDB();
 
 app.use(express.json());
+
+const corsOptions = {
+  origin: "*",
+};
+
+app.use(cors(corsOptions));
 // Function to initialize seats in the database
 
 const initializeSeats = async () => {
